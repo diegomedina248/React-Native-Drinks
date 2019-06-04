@@ -8,31 +8,30 @@ export const actionTypes = {
 };
 
 export const resetDrinksStatus = () => ({
-  type: FETCH_DRINKS_RESET,
+  type: actionTypes.FETCH_DRINKS_RESET,
 });
 
 export const drinksRequest = () => ({
-  type: FETCH_DRINKS_REQUEST,
+  type: actionTypes.FETCH_DRINKS_REQUEST,
 });
 
 export const drinksSuccess = drinks => ({
-  type: FETCH_DRINKS_SUCCESS,
+  type: actionTypes.FETCH_DRINKS_SUCCESS,
   drinks,
 });
 
 export const drinksError = error => ({
-  type: FETCH_DRINKS_ERROR,
+  type: actionTypes.FETCH_DRINKS_ERROR,
   error,
 });
 
 export const fetchDrinks = () => async (dispatch) => {
   dispatch(drinksRequest());
-
   try {
-    const result = await drinksController.getDrinks();
-    if (!result || !result.drinks) throw "";
+    const {data} = await drinksController.getDrinks();
+    if (!data || !data.drinks) throw "Error communicating with API";
 
-    const {drinks} = result;
+    const {drinks} = data;
     dispatch(drinksSuccess(drinks));
   } catch (error) {
     dispatch(drinksError(error));

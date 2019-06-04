@@ -5,10 +5,6 @@ const client = axios.create({
   baseURL: API_URL,
   timeout: 100000,
   headers: { 'content-type': 'application/json' },
-  transformResponse: [
-    ...axios.defaults.transformResponse,
-    data => humps.camelizeKeys(data),
-  ],
 });
 
 

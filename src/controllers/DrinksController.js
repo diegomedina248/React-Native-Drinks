@@ -7,7 +7,7 @@ class DrinksController {
     this.basePath = 'filter.php'
   }
 
-  getDrinks = await httpClient.get(this.basePath, {
+  getDrinks = async () => await httpClient.get(this.basePath, {
     params: {
       g: COCKTAIL_TYPE,
     },
