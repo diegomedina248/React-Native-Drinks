@@ -18,8 +18,8 @@ client.interceptors.request.use(
 );
 
 client.interceptors.response.use(response => response, (error) => {
-  console.log('Request got response with error:');
-  console.log(error);
+  console.log('Request got response with error:'); // eslint-disable-line no-console
+  console.log(error); // eslint-disable-line no-console
   return Promise.reject(error);
 });
 

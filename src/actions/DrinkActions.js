@@ -28,10 +28,10 @@ export const drinksError = error => ({
 export const fetchDrinks = () => async (dispatch) => {
   dispatch(drinksRequest());
   try {
-    const {data} = await drinksController.getDrinks();
-    if (!data || !data.drinks) throw "Error communicating with API";
+    const { data } = await drinksController.getDrinks();
+    if (!data || !data.drinks) throw new Error({ message: 'Error communicating with API' });
 
-    const {drinks} = data;
+    const { drinks } = data;
     dispatch(drinksSuccess(drinks));
   } catch (error) {
     dispatch(drinksError(error));

@@ -1,0 +1,25 @@
+{
+  "env": {
+      "node": true,
+      "browser": true,
+      "es6": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+      "airbnb",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+  ],
+  "rules": {
+      "react/jsx-filename-extension": ".js",
+      "react/forbid-prop-types": false,
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+      "import/order": ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}],
+      "import/first": "off"
+  },
+  "settings": {
+      "import/resolver": {
+        "babel-module": {}
+      }
+  }
+}
